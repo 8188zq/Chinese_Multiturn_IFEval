@@ -1,7 +1,7 @@
 import random
 import re
 
-from chinese_multiturn_ifeval.instructions import Instruction
+from ..instructions import Instruction
 
 _NUM_PARAGRAPHS = 3
 

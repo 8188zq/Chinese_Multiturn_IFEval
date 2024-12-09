@@ -24,7 +24,7 @@ import os
 import sys
 from typing import Dict, Optional, Sequence, Union
 
-from chinese_multiturn_ifeval import instructions_registry
+from . import instructions_registry
 
 
 @dataclasses.dataclass

@@ -14,7 +14,7 @@
 # limitations under the License.
 
 """Registry of all instructions."""
-from chinese_multiturn_ifeval import instructions
+from . import instructions
 
 _KEYWORD = "keywords:"
 
@@ -35,9 +35,9 @@ _STARTEND = "startend:"
 _CHANGE_CASES = "change_case:"
 
 _PUNCTUATION = "punctuation:"
-from chinese_multiturn_ifeval.instruction_checker import ResponseLanguageChecker
-from chinese_multiturn_ifeval.instruction_checker import KeywordChecker,KeywordFrequencyChecker,ForbiddenWords
-from chinese_multiturn_ifeval.instruction_checker import ParagraphChecker,NumberOfWords,NumberOfWordsRange,NumOfithParagraph
+from ..instruction_checker import ResponseLanguageChecker
+from ..instruction_checker import KeywordChecker,KeywordFrequencyChecker,ForbiddenWords
+from ..instruction_checker import ParagraphChecker,NumberOfWords,NumberOfWordsRange,NumOfithParagraph
 INSTRUCTION_DICT = {
     _KEYWORD + "existence": KeywordChecker.KeywordChecker,
     _KEYWORD + "frequency": KeywordFrequencyChecker.KeywordFrequencyChecker,

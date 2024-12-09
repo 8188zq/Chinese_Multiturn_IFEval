@@ -24,7 +24,7 @@ from typing import Dict, Optional, Sequence, Union
 import logging
 import langdetect
 
-from chinese_multiturn_ifeval import instructions_util
+from . import instructions_util
 
 _InstructionArgsDtype = Optional[Dict[str, Union[int, str, Sequence[str]]]]
 
