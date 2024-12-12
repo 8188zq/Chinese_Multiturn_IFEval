@@ -8,8 +8,8 @@ from typing import Dict, Optional, Sequence, Union
 import logging
 import langdetect
 
-from chinese_multiturn_ifeval.instructions import Instruction
-from chinese_multiturn_ifeval import instructions_util
+from ..instructions import Instruction
+from .. import instructions_util
 
 _LANGUAGES = instructions_util.LANGUAGE_CODES
 

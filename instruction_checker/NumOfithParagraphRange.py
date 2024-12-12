@@ -1,8 +1,8 @@
 import random
 import re
 
-from chinese_multiturn_ifeval.instructions import Instruction
-from chinese_multiturn_ifeval import instructions_util
+from ..instructions import Instruction
+from .. import instructions_util
 
 _NUM_WORDS_LOWER_LIMIT = 20
 _NUM_WORDS_UPPER_LIMIT = 450

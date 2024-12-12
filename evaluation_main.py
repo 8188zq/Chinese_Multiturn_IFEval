@@ -24,7 +24,7 @@ import os
 import sys
 from typing import Dict, Optional, Sequence, Union
 
-from chinese_multiturn_ifeval import instructions_registry
+from Chinese_Multiturn_IFEval import instructions_registry
 
 
 @dataclasses.dataclass
@@ -47,7 +47,7 @@ class OutputExample:
 def read_prompt_list(input_jsonl_filename):
     """Read inputs from jsonl."""
     inputs = []
-    with open(input_jsonl_filename, "r", encoding="utf-8") as f:
+    with open(input_jsonl_filename, "r") as f:
         for l in f:
             example = json.loads(l)
             inputs.append(
@@ -64,7 +64,7 @@ def read_prompt_list(input_jsonl_filename):
 def write_outputs(output_jsonl_filename, outputs):
     """Writes outputs to jsonl."""
     assert outputs
-    with open(output_jsonl_filename, "w", encoding="utf-8") as f:
+    with open(output_jsonl_filename, "w") as f:
         for o in outputs:
             output_dict = {
                 attr_name: getattr(o, attr_name)
@@ -164,7 +164,7 @@ def test_instruction_following_loose(inp, prompt_to_response):
 def read_prompt_to_response_dict(input_jsonl_filename):
     """Creates dictionary matching prompt and response."""
     return_dict = {}
-    with open(input_jsonl_filename, "r", encoding="utf-8") as f:
+    with open(input_jsonl_filename, "r") as f:
         for l in f:
             example = json.loads(l)
             return_dict[example["prompt"]] = example["response"]
