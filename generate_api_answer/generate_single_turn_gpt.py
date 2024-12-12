@@ -3,8 +3,8 @@ import re
 from tqdm import tqdm
 from utils_gpt import generate_message, get_content
 
-path = "E:\研三\cmif-eval-code\Chinese_Multiturn_IFEval\data\single_turn.jsonl"
-output_path = "E:\研三\cmif-eval-code\Chinese_Multiturn_IFEval\data\single_turn_response.jsonl"
+path = ".\Chinese_Multiturn_IFEval\data\single_turn.jsonl"
+output_path = ".\Chinese_Multiturn_IFEval\data\single_turn_response.jsonl"
 def save_cache(item, output_path):
     with open(output_path, "a", encoding='utf-8') as g:
         g.write(json.dumps(item, ensure_ascii=False) + "\n")
