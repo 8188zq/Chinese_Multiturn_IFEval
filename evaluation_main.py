@@ -22,7 +22,7 @@ import json
 import logging
 import os
 import sys
-from typing import Dict, Optional, Sequence, Union
+from typing import Dict, Optional, Sequence, Union, List
 
 from Chinese_Multiturn_IFEval import instructions_registry
 
@@ -30,24 +30,24 @@ from Chinese_Multiturn_IFEval import instructions_registry
 @dataclasses.dataclass
 class InputExample:
     key: int
-    instruction_id_list: list[str]
+    instruction_id_list: List[str]
     prompt: str
-    kwargs: list[Dict[str, Optional[Union[str, int]]]]
+    kwargs: List[Dict[str, Optional[Union[str, int]]]]
 
 
 @dataclasses.dataclass
 class OutputExample:
-    instruction_id_list: list[str]
+    instruction_id_list: List[str]
     prompt: str
     response: str
     follow_all_instructions: bool
-    follow_instruction_list: list[bool]
+    follow_instruction_list: List[bool]
 
 
 def read_prompt_list(input_jsonl_filename):
     """Read inputs from jsonl."""
     inputs = []
-    with open(input_jsonl_filename, "r") as f:
+    with open(input_jsonl_filename, "r", encoding='utf-8') as f:
         for l in f:
             example = json.loads(l)
             inputs.append(
@@ -64,7 +64,7 @@ def read_prompt_list(input_jsonl_filename):
 def write_outputs(output_jsonl_filename, outputs):
     """Writes outputs to jsonl."""
     assert outputs
-    with open(output_jsonl_filename, "w") as f:
+    with open(output_jsonl_filename, "w", encoding='utf-8') as f:
         for o in outputs:
             output_dict = {
                 attr_name: getattr(o, attr_name)
@@ -88,7 +88,10 @@ def test_instruction_following_strict(inp, prompt_to_response):
             continue
 
         instruction = instruction_cls(instruction_id)
-        instruction.build_description(**inp.kwargs[index])
+        if len(inp.kwargs)==0:
+            instruction.build_description()
+        else:
+            instruction.build_description(**inp.kwargs[index])
         args = instruction.get_instruction_args()
         if args and "prompt" in args:
             instruction.build_description(prompt=inp.prompt)
@@ -139,7 +142,10 @@ def test_instruction_following_loose(inp, prompt_to_response):
             continue
 
         instruction = instruction_cls(instruction_id)
-        instruction.build_description(**inp.kwargs[index])
+        if len(inp.kwargs)==0:
+            instruction.build_description()
+        else:
+            instruction.build_description(**inp.kwargs[index])
         args = instruction.get_instruction_args()
         if args and "prompt" in args:
             instruction.build_description(prompt=inp.prompt)
@@ -164,7 +170,7 @@ def test_instruction_following_loose(inp, prompt_to_response):
 def read_prompt_to_response_dict(input_jsonl_filename):
     """Creates dictionary matching prompt and response."""
     return_dict = {}
-    with open(input_jsonl_filename, "r") as f:
+    with open(input_jsonl_filename, "r", encoding='utf-8') as f:
         for l in f:
             example = json.loads(l)
             return_dict[example["prompt"]] = example["response"]
@@ -241,6 +247,7 @@ def print_report(outputs):
 
 
 def main():
+    print("start 1")
     parser = argparse.ArgumentParser(
         description="Evaluate instruction following based on input data and responses."
     )
@@ -271,7 +278,7 @@ def main():
         format="%(asctime)s - %(levelname)s - %(message)s",
         handlers=[logging.StreamHandler(sys.stdout)],
     )
-
+    print("start 2")
     # Validate output directory
     if not os.path.exists(args.output_dir):
         try:
@@ -284,7 +291,7 @@ def main():
     # Read input data
     logging.info(f"Reading input data from {args.input_data}...")
     inputs = read_prompt_list(args.input_data)
-
+    print("start 3")
     # Read response data if provided
     if args.input_response_data:
         logging.info(f"Reading response data from {args.input_response_data}...")
@@ -325,4 +332,5 @@ def main():
 
 
 if __name__ == "__main__":
+    print(1111)
     main()

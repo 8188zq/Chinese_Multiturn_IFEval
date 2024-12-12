@@ -122,11 +122,15 @@ def split_into_sentences(text):
   return sentences
 
 
+# def count_words(text):
+#   """Counts the number of words."""
+#   tokenizer = nltk.tokenize.RegexpTokenizer(r"\w+")
+#   tokens = tokenizer.tokenize(text)
+#   num_words = len(tokens)
+#   return num_words
 def count_words(text):
   """Counts the number of words."""
-  tokenizer = nltk.tokenize.RegexpTokenizer(r"\w+")
-  tokens = tokenizer.tokenize(text)
-  num_words = len(tokens)
+  num_words = len(text)
   return num_words
 
 

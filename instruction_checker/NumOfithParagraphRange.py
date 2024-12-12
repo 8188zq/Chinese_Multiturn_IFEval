@@ -6,7 +6,6 @@ from .. import instructions_util
 
 _NUM_WORDS_LOWER_LIMIT = 20
 _NUM_WORDS_UPPER_LIMIT = 450
-_COMPARISON_RELATION = ("超过", "少于")
 _NUM_PARAGRAPHS = 3
 
 class NumOfithParagraphRange(Instruction):

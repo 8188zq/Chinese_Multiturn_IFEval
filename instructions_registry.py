@@ -28,7 +28,7 @@ _SYMBOLS = "symbols:"
 
 _CHINESE = "chinese:"
 
-from Chinese_Multiturn_IFEval.instruction_checker import ResponseLanguageChecker
+# from Chinese_Multiturn_IFEval.instruction_checker import ResponseLanguageChecker
 from Chinese_Multiturn_IFEval.instruction_checker import KeywordChecker,KeywordFrequencyChecker,ForbiddenWords
 from Chinese_Multiturn_IFEval.instruction_checker import ParagraphChecker,NumberOfWords,NumberOfWordsRange,NumOfithParagraph,NumOfithParagraphRange
 from Chinese_Multiturn_IFEval.instruction_checker import RepeatQuestion,TwoResponse
@@ -38,7 +38,7 @@ INSTRUCTION_DICT = {
     _KEYWORD + "existence": KeywordChecker.KeywordChecker,
     _KEYWORD + "frequency": KeywordFrequencyChecker.KeywordFrequencyChecker,
     _KEYWORD + "forbidden_words": ForbiddenWords.ForbiddenWords,
-    _LANGUAGE + "response_language": ResponseLanguageChecker.ResponseLanguageChecker,
+    # _LANGUAGE + "response_language": ResponseLanguageChecker.ResponseLanguageChecker,
     _LENGTH + "number_paragraphs": ParagraphChecker.ParagraphChecker,
     _LENGTH + "number_words": NumberOfWords.NumberOfWords,
     _LENGTH + "number_words_range": NumberOfWordsRange.NumberOfWordsRange,

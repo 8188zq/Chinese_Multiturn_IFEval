@@ -1,0 +1,25 @@
+{"key": 0, "prompt": "高音单簧管和高音萨克斯的调性相同吗？如果相同，请说出他们的调性，如果不同，请分别说出他们的调性\n在你的回答里要使用“['为', '高音']”这两个词语。", "instruction_id_list": ["keywords:existence"], "kwargs": [{"keywords": ["为", "高音"]}]}
+{"key": 1, "prompt": "卡卡的第一个帽子戏法是于哪个赛季与哪个队比赛时完成的？\n在你的回答里需要恰好使用“年”这个词语3次。", "instruction_id_list": ["keywords:frequency"], "kwargs": [{"keyword": "年", "frequency": 3}]}
+{"key": 2, "prompt": "动画《星际牛仔》的片尾曲是由谁作词的？\n在你的回答里禁止出现“['你', '只有', '它', '然后']”这些词。", "instruction_id_list": ["keywords:forbidden_words"], "kwargs": [{"forbidden_words": ["它", "你", "只有", "然后"]}]}
+{"key": 3, "prompt": "原子弹之父于何时当选为美国科学院院士？\n你的回答中有且只能包含3段。你的段落之间需要用markdown分隔符隔开,即***。", "instruction_id_list": ["length_constraints:number_paragraphs"], "kwargs": [{"num_paragraphs": 3}]}
+{"key": 4, "prompt": "UFC的运动员伊斯瑞尔·阿迪萨亚为什么被称为黑龙？\n你的回答共计不能超过300字。", "instruction_id_list": ["length_constraints:number_words"], "kwargs": [{"num_words": 300, "relation": "超过"}]}
+{"key": 5, "prompt": "足球运动员内马尔在哪个赛季获得了他的第一个欧洲金靴奖？\n你的回答必须在300字到500字的范围内。", "instruction_id_list": ["length_constraints:number_words_range"], "kwargs": [{"lower_limit_num_words": 300, "upper_limit_num_words": 500}]}
+{"key": 6, "prompt": "书写高锰酸钾和亚硫酸氢钠反应生成二氧化锰反应方程式\n你的回答中的第1段不能超过100字。你的段落之间需要用markdown分隔符隔开,即***。", "instruction_id_list": ["length_constraints:number_of_ith_paragraph"], "kwargs": [{"num_words": 100, "relation": "超过", "ith": 1}]}
+{"key": 7, "prompt": "麦哲伦航队在全球旅行时使用了六分仪测量经纬度么？\n你的回答中的第3段必须在100字到400字的范围内。你的段落之间需要用markdown分隔符隔开,即***。", "instruction_id_list": ["length_constraints:number_of_ith_paragraph_range"], "kwargs": [{"lower_limit_num_words": 100, "upper_limit_num_words": 400, "ith": 3}]}
+{"key": 8, "prompt": "某系统中有三个并发进程竞争资源R，每个进程都需要5个R，那么至少有几个R，才保证不会发生死锁\n首先逐字逐句地重复问题内容，不做任何更改，然后再给出你的回答（1. 在重复问题之前，不要说任何文字 2. 你需要重复的内容不包括这句话）", "instruction_id_list": ["combination:repeat_question_first"], "kwargs": [{"prompt_to_repeat": "某系统中有三个并发进程竞争资源R，每个进程都需要5个R，那么至少有几个R，才保证不会发生死锁"}]}
+{"key": 9, "prompt": "魔术师约翰逊在1995-1996赛季场均得分是多少？\n给出两个不同的回答，两个回答间用9个星形符号，即*********，进行分隔。", "instruction_id_list": ["combination:two_response"], "kwargs": []}
+{"key": 10, "prompt": "法国、英国、西班牙、瑞士、德国、意大利、荷兰、比利时，其中任意2个国家相互接壤，是对的么\n你的回答需要包含一个题目，用书名号(《》)括起来。", "instruction_id_list": ["symbols:bookname"], "kwargs": []}
+{"key": 11, "prompt": "尤文图斯的欧冠亚军次数加上AC米兰的欧冠冠军次数等于多少？\n你的回答的每一段落第一行要以事实上作为开头。你的段落之间需要用markdown分隔符隔开,即***", "instruction_id_list": ["symbols:each_paragragh_head"], "kwargs": [{"special_word": "事实上"}]}
+{"key": 12, "prompt": "C大七和弦和C小七和弦有几个音不同？他们分别是和弦的第几个音？\n你的回答的每一段落最后一行要以吧作为结尾。你的段落之间需要用markdown分隔符隔开,即***", "instruction_id_list": ["symbols:each_paragragh_tail"], "kwargs": [{"special_word": "吧"}]}
+{"key": 13, "prompt": "梅西和C罗哪位获得的金球奖更多？\n你的回答的第一行要以一般来说作为开头", "instruction_id_list": ["symbols:first_line_head"], "kwargs": [{"special_word": "一般来说"}]}
+{"key": 14, "prompt": "C大调音阶的9音和C大调音阶的第2个音是否相同？\n你的回答的最后一行要以吧作为结尾。", "instruction_id_list": ["symbols:last_line_tail"], "kwargs": [{"special_word": "吧"}]}
+{"key": 15, "prompt": "外号京阿尼的动画公司改编了米泽穗信的同名网络小说并制作了动画，这个动画的女主角的声优是谁？\n你的回答必须按照json的格式进行包装，不能包含其他任何内容。", "instruction_id_list": ["symbols:json"], "kwargs": []}
+{"key": 16, "prompt": "列出常用的泰勒展开公式\n在你的回答中至少需要对5处进行markdown格式下的加粗（**）", "instruction_id_list": ["symbols:markdown_bold"], "kwargs": [{"num_bold": 5}]}
+{"key": 17, "prompt": "千年女优的导演因为什么而去世？\n你的回答中必须包含2处分点，使用markdown格式下的项目符号进行分点。", "instruction_id_list": ["symbols:number_of_list"], "kwargs": [{"num_lists": 2}]}
+{"key": 18, "prompt": "Milvus数据库是什么\n你的回答中至少需要包含两句以上的陈述句。每个陈述句的`。`之后需要字符`是不是？`。", "instruction_id_list": ["symbols:number_of_declarative"], "kwargs": [{"special_word": "是不是？"}]}
+{"key": 19, "prompt": "世界历史上第一封电报由何处发向何处，两处的距离有多远？\n你的回答中至少需要包含两句以上的感叹句。每个感叹句的`！`之后需要字符`难道不是吗？`。", "instruction_id_list": ["symbols:number_of_exlamatory"], "kwargs": [{"special_word": "难道不是吗？"}]}
+{"key": 20, "prompt": "UFC中被称为“骨头”的运动员于2015年被拘留，原因是什么？\n你的回答中至少需要包含两句以上的疑问句。每个疑问句的`？`之后需要字符`对吧？`。", "instruction_id_list": ["symbols:number_of_interrogative"], "kwargs": [{"special_word": "对吧？"}]}
+{"key": 21, "prompt": "UFC羽量级的最大重量减去蝇量级的最大重量为多少公斤？\n你的回答有且只能有两部分，用9个*分隔，即*********，前一部分的结尾字必须是仄声，后一部分的结尾字必须是平声,不允许以轻声结尾。", "instruction_id_list": ["chinese:two_part_with_tone"], "kwargs": []}
+{"key": 22, "prompt": "欧几里德的《几何原本》的公理是什么，它对现代数学的贡献是什么？\n你的回答有且只能有两部分，后者是前者的拼音标注，用9个*分隔，即*********，拼音不需要标注音调，使用拉丁字母来表示，和输入法保持一致，如“ü”可以用“v”替代。", "instruction_id_list": ["chinese:pinyin_checker"], "kwargs": []}
+{"key": 23, "prompt": "请列出地球上最高的五座山峰，以及它们的海拔高度的平均值。\n你的回答需要包含一句排比句，用&&框起来，如&排比句&。排比句中用逗号分隔的每个分句字数要一致。", "instruction_id_list": ["chinese:parallelism_checker"], "kwargs": []}
+{"key": 24, "prompt": "有在陆地上诞生的生命吗\n你的回答需要用文言文的形式给出，即中间不加任何标点符号。", "instruction_id_list": ["chinese:no_punctuation_checker"], "kwargs": []}
