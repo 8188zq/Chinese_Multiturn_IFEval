@@ -1,7 +1,7 @@
 import os
 import time
 from openai import OpenAI
-# os.environ["OPENAI_API_KEY"] = "sk-...."
+os.environ["OPENAI_API_KEY"] = "sk-hONtZOK4B0Zptn3yD608Ce26D6494cC787B323984d954f63"
 os.environ["OPENAI_BASE_URL"] = "https://api.yesapikey.com/v1"
 client = OpenAI()
 

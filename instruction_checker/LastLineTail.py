@@ -30,5 +30,7 @@ class LastLineTail(Instruction):
     """
     
     paragraphs = value.split("\n")
+    last_line = paragraphs[-1].strip()
+    last_line_without_punctuation = re.sub(r'[.!?，。！？]*$', '', last_line)
 
-    return paragraphs[-1].endswith(self.special_word)
+    return last_line_without_punctuation.endswith(self.special_word)
