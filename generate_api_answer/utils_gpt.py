@@ -1,8 +1,10 @@
 import os
 import time
 from openai import OpenAI
-os.environ["OPENAI_API_KEY"] = "sk-hONtZOK4B0Zptn3yD608Ce26D6494cC787B323984d954f63"
-os.environ["OPENAI_BASE_URL"] = "https://api.yesapikey.com/v1"
+# os.environ["OPENAI_API_KEY"] = "sk-hONtZOK4B0Zptn3yD608Ce26D6494cC787B323984d954f63"
+# os.environ["OPENAI_BASE_URL"] = "https://api.yesapikey.com/v1"
+os.environ["OPENAI_API_KEY"] = "sk-louKpw4q7on43tV54dC251D34377481889EeB11f188d9dBa"
+os.environ["OPENAI_BASE_URL"] = "https://api3.apifans.com/v1"
 client = OpenAI()
 
 import time
