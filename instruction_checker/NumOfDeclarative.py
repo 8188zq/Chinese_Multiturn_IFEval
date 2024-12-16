@@ -50,11 +50,15 @@ class NumOfDeclarative(Instruction):
 
     count = 0
     index = 0
-    for index in range(n):
-      if value[index] == "。":
-        if value[index: index + len(self.special_word)] != self.special_word:
-          return False
-        index += len(self.special_word)
-        count += 1
-        
+    while index < n:
+        if value[index] == "。":
+            begin = index + 1
+            end = begin + len(self.special_word)
+            if value[begin:end] != self.special_word:
+                return False
+            index += len(self.special_word)+1
+            count += 1
+        else:
+            index += 1
+
     return count >= 2

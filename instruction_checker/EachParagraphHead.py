@@ -13,7 +13,7 @@ class EachParagraphHead(Instruction):
     """
     
     self.special_word = special_word
-    self._description_pattern = ("你的回答的每一段落第一行要以{special_word}作为开头。你的段落之间需要用markdown分隔符隔开,即***")
+    self._description_pattern = ("你的回答的每一段落第一行要以`{special_word}`作为开头。你的段落之间需要用markdown分隔符隔开,即***")
 
     return self._description_pattern.format(special_word=self.special_word)
 
@@ -32,7 +32,7 @@ class EachParagraphHead(Instruction):
     paragraphs = re.split(r"\s?\*\*\*\s?", value)
     
     for paragraph in paragraphs:
-      if not paragraph.split("\n")[0].startswith(self.special_word):
+      if not paragraph.strip().split("\n")[0].startswith(self.special_word):
         return False
     
     return True

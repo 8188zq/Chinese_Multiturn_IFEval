@@ -13,7 +13,7 @@ class LastLineTail(Instruction):
     """
     
     self.special_word = special_word
-    self._description_pattern = ("你的回答的最后一行要以{special_word}作为结尾。")
+    self._description_pattern = ("你的回答的最后一行要以`{special_word}`作为结尾。")
 
     return self._description_pattern.format(special_word=self.special_word)
 

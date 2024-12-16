@@ -59,11 +59,11 @@ class TwoPartWithTone(Instruction):
 
         # Check if the tone of the last character of the first sentence is oblique (3 or 4)
         def is_oblique_tone(tone):
-            return tone in [3, 4]  # 仄声: 三声、四声
+            return tone in ['3', '4', 3, 4]  # 仄声: 三声、四声
 
         # Check if the tone of the last character of the second sentence is level (1 or 2)
         def is_level_tone(tone):
-            return tone in [1, 2]  # 平声: 一声、二声
+            return tone in ['1', '2', 1, 2]  # 平声: 一声、二声
 
         # Get the tones for the last characters of the two sentences
         first_tone = get_last_tone(first_sentence)

@@ -13,7 +13,7 @@ class EachParagraphTail(Instruction):
     """
     
     self.special_word = special_word
-    self._description_pattern = ("你的回答的每一段落最后一行要以{special_word}作为结尾。你的段落之间需要用markdown分隔符隔开,即***")
+    self._description_pattern = ("你的回答的每一段落最后一行要以`{special_word}`作为结尾。你的段落之间需要用markdown分隔符隔开,即***")
 
     return self._description_pattern.format(special_word=self.special_word)
 
@@ -32,7 +32,9 @@ class EachParagraphTail(Instruction):
     paragraphs = re.split(r"\s?\*\*\*\s?", value)
     
     for paragraph in paragraphs:
-      if not paragraph.split("\n")[-1].endswith(self.special_word):
+      last_line = paragraph.strip().split("\n")[-1]
+      last_line_without_punctuation = re.sub(r'[.!?，。！？]*$', '', last_line)
+      if not last_line_without_punctuation.endswith(self.special_word):
         return False
     
     return True

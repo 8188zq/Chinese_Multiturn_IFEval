@@ -8,7 +8,7 @@ class ParallelismChecker(Instruction):
     def build_description(self):
         """Build the instruction description."""
         self._description_pattern = (
-            "你的回答需要包含一句排比句，用&&框起来，如&排比句&。排比句中用逗号分隔的每个分句字数要一致。"
+            "你的回答需要包含一句字数严格相等的排比句，用&&框起来，如&排比句&。排比句中用逗号分隔的每个分句字数要一致。"
         )
         return self._description_pattern
 

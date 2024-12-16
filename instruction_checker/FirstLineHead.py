@@ -13,7 +13,7 @@ class FirstLineHead(Instruction):
     """
     
     self.special_word = special_word
-    self._description_pattern = ("你的回答的第一行要以{special_word}作为开头")
+    self._description_pattern = ("你的回答的第一行要以`{special_word}`作为开头")
 
     return self._description_pattern.format(special_word=self.special_word)
 
