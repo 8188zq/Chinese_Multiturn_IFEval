@@ -52,6 +52,8 @@ class TwoPartWithTone(Instruction):
             # Get the pinyin with tone for the last character of the sentence
             # last_char = sentence[-1]
             last_char = remove_punctuation_and_get_last_char(sentence)
+            if last_char is None:
+                return None
             pinyin_tone = pinyin(last_char, style=Style.TONE3)  # Style.TONE3 gives the pinyin with tone number
             if pinyin_tone:
                 return pinyin_tone[0][0][-1]  # Return the tone number (1-4)

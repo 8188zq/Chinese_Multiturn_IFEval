@@ -29,11 +29,6 @@ class NumberOfLists(Instruction):
     return ["num_lists"]
 
   def check_following(self, value):
-    """
-    """
+    bullet_lists = re.findall(r"^\s*[\*\+\-\d][^\*].*$|^\s*\d+\..*$", value, flags=re.MULTILINE)
     
-    bullet_lists = re.findall(r"^\s*[\*\+\-][^\*].*$", value, flags=re.MULTILINE)
-    bullet_lists_2 = re.findall(r"^\s*-.*$", value, flags=re.MULTILINE)
-    num_bullet_lists = len(bullet_lists) + len(bullet_lists_2)
-    
-    return num_bullet_lists == self._num_lists
+    return len(bullet_lists) >= self._num_lists

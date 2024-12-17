@@ -109,8 +109,13 @@ def test_instruction_following_strict(inp, prompt_to_response):
                 instruction.build_description()
             else:
                 instruction.build_description(**inp.kwargs[index])
-
-            if resp and instruction.check_following(resp):
+            try:
+                check = instruction.check_following(resp)
+            except:
+                print(f"instruction_id:{instruction_id}")
+                print(f"resp: {resp}")
+                check = False
+            if resp and check:
                 is_following_list.append(True)
             else:
                 is_following_list.append(False)
@@ -132,31 +137,6 @@ def test_instruction_following_loose(inp, prompt_to_response):
     """Tests response for an upper bound for following instructions."""
     prompt_key = "|".join(inp.prompt)  # 将 prompt 连接成一个键来查找
     response = prompt_to_response.get(prompt_key, "")
-
-    all_responses = []
-    
-    # 对每个响应进行处理
-    for resp in response:
-        resp_remove_first = "\n".join(resp.split("\n")[1:]).strip()  # 去掉首行
-        resp_remove_last = "\n".join(resp.split("\n")[:-1]).strip()  # 去掉尾行
-        resp_remove_both = "\n".join(resp.split("\n")[1:-1]).strip()  # 去掉首尾行
-        
-        revised_resp = resp.replace("*", "")  # 去掉星号
-        revised_resp_remove_first = resp_remove_first.replace("*", "")
-        revised_resp_remove_last = resp_remove_last.replace("*", "")
-        revised_resp_remove_both = resp_remove_both.replace("*", "")
-        
-        # 为每个响应版本创建不同的版本
-        all_responses.extend([
-            resp,  # 原始响应
-            revised_resp,  # 去掉星号的响应
-            resp_remove_first,  # 去掉首行的响应
-            resp_remove_last,  # 去掉尾行的响应
-            resp_remove_both,  # 去掉首尾行的响应
-            revised_resp_remove_first,  # 去掉星号和首行的响应
-            revised_resp_remove_last,  # 去掉星号和尾行的响应
-            revised_resp_remove_both,  # 去掉星号和首尾行的响应
-        ])
     
     is_following_list_all = []  # 用于存储针对整个 instruction_id_list 的结果
     is_following_list_1 = []  # 用于存储针对 [instruction_id_list[0]] 的结果
@@ -172,7 +152,7 @@ def test_instruction_following_loose(inp, prompt_to_response):
     ]
     
     # 遍历每个切片，同时对比每个响应
-    for instruction_slice, resp, is_following_list in zip(instruction_slices, all_responses, [is_following_list_1, is_following_list_2, is_following_list_all]):
+    for instruction_slice, _resp, is_following_list in zip(instruction_slices, response, [is_following_list_1, is_following_list_2, is_following_list_all]):
         for index, instruction_id in enumerate(instruction_slice):
             instruction_cls = instructions_registry.INSTRUCTION_DICT.get(instruction_id)
             if not instruction_cls:
@@ -187,6 +167,30 @@ def test_instruction_following_loose(inp, prompt_to_response):
                 instruction.build_description(**inp.kwargs[index])
 
             is_following = False
+            all_responses = []
+    
+            # 对每个响应进行处理
+            for resp in _resp:
+                resp_remove_first = "\n".join(resp.split("\n")[1:]).strip()  # 去掉首行
+                resp_remove_last = "\n".join(resp.split("\n")[:-1]).strip()  # 去掉尾行
+                resp_remove_both = "\n".join(resp.split("\n")[1:-1]).strip()  # 去掉首尾行
+                
+                revised_resp = resp.replace("*", "")  # 去掉星号
+                revised_resp_remove_first = resp_remove_first.replace("*", "")
+                revised_resp_remove_last = resp_remove_last.replace("*", "")
+                revised_resp_remove_both = resp_remove_both.replace("*", "")
+                
+                # 为每个响应版本创建不同的版本
+                all_responses.extend([
+                    _resp,  # 原始响应
+                    revised_resp,  # 去掉星号的响应
+                    resp_remove_first,  # 去掉首行的响应
+                    resp_remove_last,  # 去掉尾行的响应
+                    resp_remove_both,  # 去掉首尾行的响应
+                    revised_resp_remove_first,  # 去掉星号和首行的响应
+                    revised_resp_remove_last,  # 去掉星号和尾行的响应
+                    revised_resp_remove_both,  # 去掉星号和首尾行的响应
+                ])
             for r in all_responses:
                 if r and instruction.check_following(r):
                     is_following = True
@@ -377,5 +381,4 @@ def main():
 
 
 if __name__ == "__main__":
-    print(1111)
     main()

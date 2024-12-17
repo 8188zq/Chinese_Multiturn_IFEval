@@ -26,9 +26,7 @@ class JsonChecker(Instruction):
     return []
 
   def check_following(self, value):
-    """
-    """
-    
+    value = re.sub(r"```.*\n|\n```", "", value).strip()    
     try:
       json.loads(value)
     except Exception:
